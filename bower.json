@@ -1,0 +1,28 @@
+{
+  "name": "boring-utils.js",
+  "version": "0.0.1",
+  "authors": [
+    "BoringTu <mail@boringtu.com>"
+  ],
+  "description": "Personal utils script",
+  "main": "",
+  "keywords": [
+    "boringUtils",
+    "boringtu"
+  ],
+  "license": "MIT",
+  "homepage": "https://boringtu.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.20",
+    "text": "~2.0.14",
+    "js-base64": "2.1.9",
+    "js-md5": "^2.4.0"
+  }
+}
