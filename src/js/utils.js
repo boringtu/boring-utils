@@ -52,6 +52,29 @@
         return re;
       };
 
+
+      /*
+      		  * 数据参数化
+      		  * e.g. {"a": 1, "b": 2} => "a=1&b=2"
+       */
+
+      Utils.prototype.parameterization = function(data) {
+        var fun, k, re, v;
+        if (data == null) {
+          data = {};
+        }
+        re = "";
+        fun = function(str) {
+          return ("" + str).replace(/\s/g, '_');
+        };
+        for (k in data) {
+          if (!hasProp.call(data, k)) continue;
+          v = data[k];
+          re += "&" + (fun(k)) + "=" + (fun(v));
+        }
+        return re.slice(1);
+      };
+
       Utils.prototype.isWindow = function(obj) {
         return (obj != null) && obj === obj.window;
       };
@@ -564,7 +587,7 @@
        */
 
       Array.prototype.unique = function(bool) {
-        var hash, j, k, len1, len2, obj, re, result;
+        var hash, j, l, len1, len2, obj, re, result;
         if (bool == null) {
           bool = false;
         }
@@ -583,8 +606,8 @@
           }
           return [result, re];
         } else {
-          for (k = 0, len2 = this.length; k < len2; k++) {
-            obj = this[k];
+          for (l = 0, len2 = this.length; l < len2; l++) {
+            obj = this[l];
             if (!hash[obj]) {
               result.push(obj);
               hash[obj] = true;
@@ -659,7 +682,7 @@
        */
 
       Number.prototype.accurate = function(count, round) {
-        var j, k, len, num, re, ref1, ref2, str, temp, txt, x;
+        var j, l, len, num, re, ref1, ref2, str, temp, txt, x;
         if (round == null) {
           round = true;
         }
@@ -682,7 +705,7 @@
         if (len) {
           txt += (num % 1 === 0 ? '.' : '');
         }
-        for (i = k = 0, ref2 = len; 0 <= ref2 ? k < ref2 : k > ref2; i = 0 <= ref2 ? ++k : --k) {
+        for (i = l = 0, ref2 = len; 0 <= ref2 ? l < ref2 : l > ref2; i = 0 <= ref2 ? ++l : --l) {
           txt += '0';
         }
         return txt;

@@ -29,6 +29,16 @@ define ['md5', 'base64'], (md5) ->
 					re[o]	= val
 			re
 
+		###
+		 # 数据参数化
+		 # e.g. {"a": 1, "b": 2} => "a=1&b=2"
+		###
+		parameterization: (data = {}) ->
+			re = ""
+			fun = (str) -> "#{ str }".replace /\s/g, '_'
+			re += "&#{ fun k }=#{ fun v }" for own k, v of data
+			re.slice 1
+
 		isWindow: (obj) ->
 			obj? and obj is obj.window
 
